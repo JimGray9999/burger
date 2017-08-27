@@ -7,7 +7,7 @@ USE burgers_db;
 CREATE TABLE burgers (
   id int AUTO_INCREMENT,
   burger_name varchar(30) NOT NULL,
-  devoured boolean(10),
+  devoured boolean DEFAULT false,
   date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY(id)
 );
