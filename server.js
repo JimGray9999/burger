@@ -4,6 +4,7 @@ var exphbs = require("express-handlebars");
 var method = require('method-override');
 var bodyParser = require('body-parser');
 var methodOverride = require("method-override");
+var connection = require('./config/connection');
 
 var port = process.env.PORT || 3000;
 
