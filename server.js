@@ -1,5 +1,6 @@
 // required npm packages
 var express = require('express');
+var exphbs = require("express-handlebars");
 var method = require('method-override');
 var bodyParser = require('body-parser');
 var methodOverride = require("method-override");
@@ -29,7 +30,11 @@ app.use(bodyParser.json({
 }));
 
 app.get("/", function(req, res) {
+  connection.query("SELECT * FROM burgers;", function(err, data) {
+    if (err) throw err;
 
+    res.render("index", { burgers: data });
+  })
 });
 
 app.post("/", function(req, res) {
