@@ -1,10 +1,8 @@
 // required npm packages
 var express = require('express');
 var exphbs = require("express-handlebars");
-var method = require('method-override');
 var bodyParser = require('body-parser');
 var methodOverride = require("method-override");
-var connection = require('./config/connection');
 
 var port = process.env.PORT || 3000;
 
@@ -14,40 +12,18 @@ var app = express(); // create an app instance of express.js
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
 app.use(methodOverride("_method"));
 
-// Sets up the Express app to handle data parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+var exphbs = require("express-handlebars");
 
-app.use(bodyParser.text());
-app.use(bodyParser.json({
-  type: "application/vnd.api+json"
-}));
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller.js");
 
-app.get("/", function(req, res) {
-  connection.query("SELECT * FROM burgers;", function(err, data) {
-    if (err) throw err;
-
-    res.render("index", { burgers: data });
-  })
-});
-
-app.post("/", function(req, res) {
-
-});
-
-app.put("/", function(req, res) {
-
-});
-
-app.delete("/", function(req, res) {
-
-});
+app.use("/", routes);
 
 app.listen(port);

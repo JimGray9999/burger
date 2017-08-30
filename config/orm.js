@@ -1,10 +1,32 @@
+// MySQL connection req
 var connection = require('./connection');
 
+// orm object of functions
+var orm = {
+  selectAll: function(table, cb){
+    var query = "SELECT * FROM " + table + ";";
+    connection.query(query, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    })
+  },
+  insertOne: function(table, val, cb){ 
+    var query = "INSERT INTO " + table;
 
-// TO DO:
-// In the orm.js file, create the methods that will execute the necessary MySQL commands in the controllers. 
-// These are the methods you will need to use in order to retrieve and store data in your database.
-// selectAll()
-// insertOne()
-// updateOne()
-// Export the ORM object in module.exports. 
+    connection.query(query, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    })
+  },
+  updateOne: function(table, col, val, cb){ 
+    var query = "INSERT INTO " + table;
+    
+    connection.query(query, function(err, result) {
+      if (err) throw err;
+      cb(result);
+    })
+  }
+};
+
+// Export the ORM object for the burger.js model 
+module.exports = orm;
