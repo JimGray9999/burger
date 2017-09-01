@@ -13,7 +13,11 @@ router.get("/", function(req, res) {
   })
 });
 
-router.post();
+router.post("/", function(req, res) {
+  burger.create(function(data) {
+    
+  })
+});
 
 router.put();
 

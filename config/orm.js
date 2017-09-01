@@ -6,19 +6,22 @@ var orm = {
   selectAll: function(table, cb){
     var query = "SELECT * FROM " + table + ";";
     connection.query(query, function(err, result) {
-      if (err) throw err;
+      if (err) {throw err }
       cb(result);
-    })
+    });
   },
-  insertOne: function(table, val, cb){ 
+  insertOne: function(table, col, val, cb){ 
     var query = "INSERT INTO " + table;
+    query += "(" + col.toString();
+    query =+ ", devoured) VALUES (" + val.toString();
+    query =+ ", false)";
 
     connection.query(query, function(err, result) {
-      if (err) throw err;
+      if (err) { throw err };
       cb(result);
     })
   },
-  updateOne: function(table, col, val, cb){ 
+  updateOne: function(table, col, val, cb) { 
     var query = "INSERT INTO " + table;
     
     connection.query(query, function(err, result) {
