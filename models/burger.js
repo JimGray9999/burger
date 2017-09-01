@@ -11,14 +11,14 @@ var burger = {
       cb(res);
     })
   }, 
-  update: function (cb) {
-    orm.updateOne("burgers", "burger_name", function (res) {
-      cb(res);
-    })
-  }, 
-  delete: function (cb) {
+  // update: function (cb) {
+  //   orm.updateOne("burgers", "burger_name", function (res) {
+  //     cb(res);
+  //   })
+  // }, 
+  // delete: function (cb) {
 
-  }
+  // }
 };
 
 module.exports = burger;
