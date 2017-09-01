@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Eat-Da-Burger!</title>
 </head>
 <body>
@@ -24,8 +25,9 @@
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
+              <i class="material-icons">room_service</i>
               <span class="card-title">Burger #{{this.id}}</span>
-              <p>Movie Name: {{this.burger_name}}</p>
+              <p>Burger Name: {{this.burger_name}}</p>
             </div>
             <div class="card-action">
               <form action="/{{this.id}}?_method=DELETE" method="POST">
