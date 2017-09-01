@@ -2,7 +2,7 @@ var express = require("express");
 
 var router = express.Router();
 
-// Import the model (cat.js) to use its database functions.
+// Import the burger.js model
 var burger = require("../models/burger.js");
 
 router.get("/", function (req, res) {
@@ -10,17 +10,17 @@ router.get("/", function (req, res) {
     var brgObject = {
       burgers: data
     };
+    res.render("index", brgObject);
   });
 });
 
 router.post("/", function (req, res) {
-  burger.create(function (data) {
-    ["burgers", "devoured"],
-    [req.body.burger, false], 
-    function() {
+  console.log(req.body.burger);
+  burger.create(
+    req.body.burger, 
+    function () {
       res.redirect("/");
-    };
-  });
+    });
 });
 
 // router.put();

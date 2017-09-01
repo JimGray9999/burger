@@ -6,19 +6,19 @@ var burger = {
       cb(res);
     });
   },
-  create: function (cb) {
-    orm.insertOne("burgers", col, vals, function (res) {
+  create: function (vals, cb) {
+    orm.insertOne("burgers", "burger_name", vals, function (res) {
       cb(res);
     })
   }, 
-  // update: function (cb) {
-  //   orm.updateOne("burgers", "burger_name", function (res) {
-  //     cb(res);
-  //   })
-  // }, 
-  // delete: function (cb) {
+  update: function (cb) {
+    orm.updateOne("burgers", "burger_name", function (res) {
+      cb(res);
+    })
+  }, 
+  delete: function (cb) {
 
-  // }
+  }
 };
 
 module.exports = burger;
