@@ -30,7 +30,7 @@
               <p>Burger Name: {{this.burger_name}}</p>
             </div>
             <div class="card-action">
-              <form action="/{{this.id}}?_method=DELETE" method="POST">
+              <form action="/{{this.id}}?_method=PUT" method="POST">
                 <button class="waves-effect waves-light btn" type="submit">DEVOUR...CHOMP!</button>
               </form>
             </div>
@@ -45,7 +45,7 @@
         <div class="row">
           <div class="input-field col s9">
             <label>Add Another Tasty Burger</label>
-            <textarea type="text" name="movie" class="materialize-textarea"></textarea>
+            <textarea type="text" name="burger" class="materialize-textarea"></textarea>
           </div>
         </div>
         <button class="waves-effect waves-light btn" type="submit">ADD</button>

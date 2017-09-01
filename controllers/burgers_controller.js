@@ -10,13 +10,17 @@ router.get("/", function (req, res) {
     var brgObject = {
       burgers: data
     };
-  })
+  });
 });
 
 router.post("/", function (req, res) {
   burger.create(function (data) {
-    
-  })
+    ["burgers", "devoured"],
+    [req.body.burger, false], 
+    function() {
+      res.redirect("/");
+    };
+  });
 });
 
 router.put();
