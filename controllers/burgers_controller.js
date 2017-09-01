@@ -23,9 +23,9 @@ router.post("/", function (req, res) {
   });
 });
 
-router.put();
+// router.put();
 
-router.delete();
+// router.delete();
 
 // Export routes for server.js
 module.exports = router;
