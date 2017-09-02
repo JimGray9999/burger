@@ -21,27 +21,51 @@
   <img class="materialboxed center-align" width="450" src="/public/assets/img/burger.png">
   <p>Available</p>
   <ul>
-  {{#each burgers}}
-    {{#unless this.devoured}}
-  	  <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <i class="material-icons">room_service</i>
-              <span class="card-title">Burger #{{this.id}}</span>
-              <p>Burger Name: {{this.burger_name}}</p>
-            </div>
-            <div class="card-action">
-              <form action="/{{this.id}}?_method=PUT" method="POST">
-                <button class="waves-effect waves-light btn" type="submit">DEVOUR...CHOMP!</button>
-              </form>
+    {{#each burgers}}
+      {{#unless this.devoured}}
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <i class="material-icons">room_service</i>
+                <span class="card-title">Burger #{{this.id}}</span>
+                <p>Burger Name: {{this.burger_name}}</p>
+              </div>
+              <div class="card-action">
+                <form action="/{{this.id}}?_method=PUT" method="POST">
+                  <button class="waves-effect waves-light btn" type="submit">DEVOUR...CHOMP!</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    {{/unless}}
-  {{/each}}
-</ul>
+      {{/unless}}
+    {{/each}}
+  </ul>
+  <p>Devoured!</p>
+    <ul>
+    {{#each burgers}}
+      {{#if this.devoured}}
+        <div class="row">
+          <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <i class="material-icons">room_service</i>
+                <span class="card-title">Burger #{{this.id}}</span>
+                <p>Burger Name: {{this.burger_name}}</p>
+              </div>
+              <div class="card-action">
+                <form action="/{{this.id}}?_method=PUT" method="POST">
+                  <button class="waves-effect waves-light btn" type="submit">DEVOUR...CHOMP!</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{/each}}
+  </ul>
+
   <div class="container-fluid">
     <div class="row">
       <form action="/" method="POST" class="col 9">
@@ -60,12 +84,10 @@
       <label>Update the Burger</label>
       
           {{#each burgers}}
-            {{#if}}
             <form action="/{{this.id}}?_method=PUT" method="POST" class="col 9">
               <select name="{{this.id}}">
                 <option value="{{this.id}}">{{this.burger_name}}</option>
               </select>
-            {{/if}}
           {{/each}}
         <textarea type="text" name="plan" placeholder="burgers here"></textarea>
         <button class="waves-effect waves-light btn" type="submit">UPDATE</button>
