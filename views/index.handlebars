@@ -19,8 +19,10 @@
 </div>
   
   <img class="materialboxed center-align" width="450" src="/public/assets/img/burger.png">
+  <p>Available</p>
   <ul>
   {{#each burgers}}
+    {{#unless this.devoured}}
   	  <div class="row">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
@@ -37,6 +39,7 @@
           </div>
         </div>
       </div>
+    {{/unless}}
   {{/each}}
 </ul>
   <div class="container-fluid">
@@ -55,13 +58,16 @@
   <div class="container-fluid">
     <div class="row">
       <label>Update the Burger</label>
-      <form action="/?_method=PUT" method="POST" class="col 9">
-        <select name="id">
+      
           {{#each burgers}}
-            <option value="{{this.id}}">{{this.burger_name}}</option>
+            {{#if}}
+            <form action="/{{this.id}}?_method=PUT" method="POST" class="col 9">
+              <select name="{{this.id}}">
+                <option value="{{this.id}}">{{this.burger_name}}</option>
+              </select>
+            {{/if}}
           {{/each}}
-        </select>
-        <textarea type="text" name="plan" placeholder="plan"></textarea>
+        <textarea type="text" name="plan" placeholder="burgers here"></textarea>
         <button class="waves-effect waves-light btn" type="submit">UPDATE</button>
       </form>      
     </div>

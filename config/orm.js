@@ -11,13 +11,12 @@ var orm = {
     });
   },
   insertOne: function(table, col, val, cb){ 
-    console.log(col);
     var query = "INSERT INTO " + table;
-    query += " (" + col;
-    query += ", devoured) VALUES (" + val.toString();
-    query += ", false)";
+    query += " (";
+    query += col.toString();
+    query += ", devoured) VALUES (?, false)";
 
-    connection.query(query, function(err, result) {
+    connection.query(query, val, function(err, result) {
       if (err) { throw err };
       cb(result);
     })

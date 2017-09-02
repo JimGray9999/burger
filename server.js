@@ -19,8 +19,6 @@ app.use(express.static("public"));
 
 app.use(methodOverride("_method"));
 
-var exphbs = require("express-handlebars");
-
 // Import routes and give the server access to them.
 var routes = require("./controllers/burgers_controller.js");
 

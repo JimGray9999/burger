@@ -15,7 +15,6 @@ router.get("/", function (req, res) {
 });
 
 router.post("/", function (req, res) {
-  console.log(req.body.burger);
   burger.create(
     req.body.burger, 
     function () {
@@ -23,9 +22,13 @@ router.post("/", function (req, res) {
     });
 });
 
-// router.put();
+router.put("/", function (req, res) {
+  var condition = "id = " + req.params.id;
+  
+  burger.update(
 
-// router.delete();
+  );
+});
 
 // Export routes for server.js
 module.exports = router;
