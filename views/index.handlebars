@@ -33,6 +33,7 @@
               </div>
               <div class="card-action">
                 <form action="/{{this.id}}?_method=PUT" method="POST">
+                  <input type="hidden" name="devoured" value="true">
                   <button class="waves-effect waves-light btn" type="submit">DEVOUR...CHOMP!</button>
                 </form>
               </div>
@@ -82,7 +83,6 @@
   <div class="container-fluid">
     <div class="row">
       <label>Update the Burger</label>
-      
           {{#each burgers}}
             <form action="/{{this.id}}?_method=PUT" method="POST" class="col 9">
               <select name="{{this.id}}">
