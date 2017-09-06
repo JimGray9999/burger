@@ -15,8 +15,10 @@ app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Serve static content for the app from the "public" directory in the application directory.
+// https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 
+// allow for the method override
 app.use(methodOverride("_method"));
 
 // Import routes and give the server access to them.
