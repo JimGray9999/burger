@@ -12,17 +12,24 @@
 <body>
   <div class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo center">That is a tasty burger!</a>
+      <div class="nav-wrapper deep-orange darken-3">
+        <a href="/" class="brand-logo right">...that is a tasty burger!</a>
+        <form action="/" method="POST" class="col s3 left">
+          <label class="left"><span class="white-text">Add Another Tasty Burger</span></label>
+          <textarea type="text" name="burger" class="materialize-textarea left"></textarea>
+          <button class="waves-effect waves-light btn left" type="submit">ADD</button>
+        </form>
       </div>
     </nav>
   </div>
   
   {{!-- populates the list of available burgers --}}
   <div class="row">
-    <div class="col s6 z-depth-3">
-      <p>Available</p>
-      <img class="left" width="150" src="/assets/img/burger.png">
+      <div class="row">
+        <p>Available</p>
+        <img class="center" width="150" src="/assets/img/burger.png">
+      </div>
+      <div class="col s6 z-depth-3">
       <ul>
         {{#each burgers}}
           {{#unless this.devoured}}
@@ -65,6 +72,7 @@
                   </div>
                   <div class="card-action">
                     <form action="/{{this.id}}?_method=PUT" method="POST">
+                      {{!-- This line is needed to note the burger is not devoured  --}}
                       <input type="hidden" name="devoured" value="false">
                       <button class="waves-effect waves-light btn" type="submit">Add back to menu!</button>
                     </form>
@@ -76,21 +84,6 @@
         {{/each}}
       </ul>
     </div>
-
-  
-  <div class="container-fluid">
-    <div class="row">
-      <form action="/" method="POST" class="col 9">
-        <div class="row z-depth-3">
-          <div class="input-field col s9">
-            <label>Add Another Tasty Burger</label>
-            <textarea type="text" name="burger" class="materialize-textarea"></textarea>
-          </div>
-        </div>
-        <button class="waves-effect waves-light btn" type="submit">ADD</button>
-      </form>
-    </div>
-  </div>
 
 <!-- Scripts -->
 <!--Import jQuery before materialize.js-->

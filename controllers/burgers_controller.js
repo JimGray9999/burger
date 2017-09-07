@@ -5,6 +5,7 @@ var router = express.Router();
 // Import the burger.js model
 var burger = require("../models/burger.js");
 
+// list all of the burgers and show in the index page
 router.get("/", function (req, res) {
   burger.read(function (data) {
     var brgObject = {
@@ -14,6 +15,7 @@ router.get("/", function (req, res) {
   });
 });
 
+// add a new burger to the menu
 router.post("/", function (req, res) {
   burger.create(
     req.body.burger, 
@@ -26,14 +28,11 @@ router.post("/", function (req, res) {
 router.put("/:id", function (req, res) {
   var condition = "id = " + req.params.id;
 
-  console.log(req.body.devoured);
-
   burger.update({
     devoured: req.body.devoured
   }, condition, function(){
     res.redirect("/");
   });
-
 });
 
 // Export routes for server.js
