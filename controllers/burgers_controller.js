@@ -28,19 +28,12 @@ router.put("/:id", function (req, res) {
 
   console.log(req.body.devoured);
 
-  if (req.body.devoured = true){
-    burger.update({
-      devoured: req.body.devoured
-    }, condition, function(){
-      res.redirect("/");
-    });
-  } else {
-    burger.update({
-      devoured: {devoured: false}
-    }, condition, function(){
-      res.redirect("/");
-    });
-  }
+  burger.update({
+    devoured: req.body.devoured
+  }, condition, function(){
+    res.redirect("/");
+  });
+
 });
 
 // Export routes for server.js

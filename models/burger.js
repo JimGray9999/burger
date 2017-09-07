@@ -15,9 +15,6 @@ var burger = {
     orm.updateOne("burgers", col, condition, function (res) {
       cb(res);
     })
-  }, 
-  delete: function (cb) {
-
   }
 };
 
