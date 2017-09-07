@@ -24,6 +24,7 @@ var orm = {
     });
   },
   insertOne: function(table, col, val, cb){ 
+    // build the query string
     var query = "INSERT INTO " + table;
     query += " (";
     query += col.toString();
@@ -35,15 +36,12 @@ var orm = {
     })
   },
   updateOne: function(table, col, condition, cb) { 
-    console.log(col);
-    
+    // build the query string
     var query = "UPDATE " + table;
-
     query += " SET " + objToSql(col);
     query += " WHERE ";
     query += condition;
     
-    console.log(query);
     connection.query(query, function(err, result) {
       if (err) throw err;
       cb(result);

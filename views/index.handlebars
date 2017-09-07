@@ -1,95 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <title>Eat-Da-Burger!</title>
-</head>
-<body>
-  {{!-- TO DO: fix the navbar, fit the add burger line into the bar --}}
-  <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper deep-orange darken-3">
-        <a href="/" class="brand-logo right">...that is a tasty burger!</a>
-        <form action="/" method="POST" class="col s3 left">
-          <label class="left"><span class="white-text">Add Another Tasty Burger</span></label>
-          <textarea type="text" name="burger" class="materialize-textarea left"></textarea>
-          <button class="waves-effect waves-light btn left" type="submit">ADD</button>
-        </form>
-      </div>
-    </nav>
-  </div>
-  
-  {{!-- populates the list of available burgers --}}
-  <div class="row">
-      <div class="row">
-        <p>Available</p>
-        <img class="center" width="150" src="/assets/img/burger.png">
-      </div>
-      <div class="col s6 z-depth-3">
-      <ul>
-        {{#each burgers}}
-          {{#unless this.devoured}}
-            <div class="row">
-              <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
-                  <div class="card-content white-text">
-                    <i class="material-icons">room_service</i>
-                    <span class="card-title">Burger #{{this.id}}</span>
-                    <p>Burger Name: {{this.burger_name}}</p>
-                  </div>
-                  <div class="card-action">
-                    <form action="/{{this.id}}?_method=PUT" method="POST">
-                      <input type="hidden" name="devoured" value="true">
-                      <button class="waves-effect waves-light btn" type="submit">DEVOUR...CHOMP!</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {{/unless}}
-        {{/each}}
-      </ul>
+{{!-- TO DO: fit the add burger line and button into the bar --}}
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper deep-orange darken-3">
+      <a href="/" class="brand-logo right">...that is a tasty burger!</a>
+      <form action="/" method="POST">
+        <div class="input-field inline row">    
+          <div class="col s7"><textarea placeholder="Add another!" type="text" name="burger" class="materialize-textarea left"></textarea></div>
+          <div class="col s5"></div><button id="tastyBtn" class="waves-effect waves-light btn right" type="submit">ADD</button></div>
+        </div>
+      </form>
     </div>
-    {{!-- populates the list of devoured burgers --}}
-    <div class="col s6 z-depth-3">
-      <p>Devoured!
-      <img class="right" width="150" src="/assets/img/tasty.png">
-      </p>
-        <ul>
-        {{#each burgers}}
-          {{#if this.devoured}}
-            <div class="row">
-              <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
-                  <div class="card-content white-text">
-                    <i class="material-icons">room_service</i>
-                    <span class="card-title">Burger #{{this.id}}</span>
-                    <p>Burger Name: {{this.burger_name}}</p>
-                  </div>
-                  <div class="card-action">
-                    <form action="/{{this.id}}?_method=PUT" method="POST">
-                      {{!-- This line is needed to note the burger is not devoured  --}}
-                      <input type="hidden" name="devoured" value="false">
-                      <button class="waves-effect waves-light btn" type="submit">Add back to menu!</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          {{/if}}
-        {{/each}}
-      </ul>
-    </div>
+  </nav>
+</div>
 
-<!-- Scripts -->
-<!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
-</body>
-</html>
+{{!-- populates the list of available burgers --}}
+<div class="row">
+    <div class="row">
+    </div>
+    <div class="col s6 z-depth-3">
+      <p>Available</p>
+      <img class="center" width="200" src="/assets/img/burger.png">
+    <ul>
+      {{#each burgers}}
+        {{#unless this.devoured}}
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <i class="material-icons">room_service</i>
+                  <span class="card-title">Burger #{{this.id}}</span>
+                  <p>Burger Name: {{this.burger_name}}</p>
+                </div>
+                <div class="card-action">
+                  <form action="/{{this.id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="devoured" value="true">
+                    <button class="waves-effect waves-light btn" type="submit">DEVOUR...CHOMP!</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+
+  {{!-- populates the list of devoured burgers --}}
+  <div class="col s6 z-depth-3">
+    <p>Devoured!</p>
+    <img class="center" width="250" src="/assets/img/tasty.png">
+    </p>
+      <ul>
+      {{#each burgers}}
+        {{#if this.devoured}}
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <i class="material-icons">room_service</i>
+                  <span class="card-title">Burger #{{this.id}}</span>
+                  <p>Burger Name: {{this.burger_name}}</p>
+                </div>
+                <div class="card-action">
+                  <form action="/{{this.id}}?_method=PUT" method="POST">
+                    {{!-- This line is needed to note the burger is not devoured  --}}
+                    <input type="hidden" name="devoured" value="false">
+                    <button class="waves-effect waves-light btn" type="submit">Add back to menu!</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
