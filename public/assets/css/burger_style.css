@@ -1,7 +1,10 @@
+
+/* push the textarea into the navbar */
 textarea.materialize-textarea {
   padding: 0;
 }
 
+/* move the button onto the same line as the textarea */
 #tastyBtn {
   margin-top: 10px;
 }

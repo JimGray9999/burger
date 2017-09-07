@@ -17,6 +17,7 @@ router.get("/", function (req, res) {
 
 // add a new burger to the menu
 router.post("/", function (req, res) {
+  console.log(req.body.burger);
   burger.create(
     req.body.burger, 
     function () {
