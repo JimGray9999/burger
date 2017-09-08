@@ -19,7 +19,6 @@ router.get("/", function (req, res) {
 router.post("/", function (req, res) {
   
   if (req.body.burger === ""){
-    Materialize.toast('Please enter a burger name David...', 4000)
     console.log("empty burger");
     res.redirect("/");
   } else {
