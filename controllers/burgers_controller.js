@@ -17,12 +17,18 @@ router.get("/", function (req, res) {
 
 // add a new burger to the menu
 router.post("/", function (req, res) {
-  console.log(req.body.burger);
+  
+  if (req.body.burger === ""){
+    Materialize.toast('Please enter a burger name David...', 4000)
+    console.log("empty burger");
+    res.redirect("/");
+  } else {
   burger.create(
     req.body.burger, 
     function () {
       res.redirect("/");
     });
+  };
 });
 
 // update the burger to devoured or available
