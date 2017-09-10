@@ -17,8 +17,9 @@ router.get("/", function (req, res) {
 
 // add a new burger to the menu
 router.post("/", function (req, res) {
-  
+  // TO DO: reg exp out any non word or number, can include ! and ?
   if (req.body.burger === ""){
+    // TO DO: use Materialize.toast() to display an error message
     console.log("empty burger");
     res.redirect("/");
   } else {
