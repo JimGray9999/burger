@@ -1,6 +1,5 @@
 const FILES_TO_CACHE = [
     '/',
-    '/index.html',
     '/assets/img/burger.png',
     '/assets/img/tasty.png',
   ];
