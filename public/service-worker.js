@@ -1,8 +1,8 @@
 const FILES_TO_CACHE = [
     '/',
     '/index.html',
-    '/assets/img/burger.png',
-    '/assets/img/tasty.png',
+    '/img/burger.png',
+    '/img/tasty.png',
   ];
 
 self.addEventListener("install", function(event) {
