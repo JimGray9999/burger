@@ -1,0 +1,17 @@
+{
+    "name": "Tasty Burger",
+    "short_name": "Burger",
+    "theme_color": "#ffcbe4",
+    "background_color": "#fa99ca",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "https://tasty-burger.herokuapp.com/",
+    "description": "Burger App",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "/public/assets/img/tasty.png",
+            "sizes": "1024x1024"
+        }
+    ]
+}
