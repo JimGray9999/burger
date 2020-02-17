@@ -3,10 +3,14 @@ var express = require('express');
 var exphbs = require("express-handlebars");
 var bodyParser = require('body-parser');
 var methodOverride = require("method-override");
+var compression = require('compression');
 
 var port = process.env.PORT || 3000;
 
 var app = express(); // create an app instance of express.js
+
+// compress all responses
+app.use(compression());
 
 // set handlebars as the engine, main as the default layout
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
